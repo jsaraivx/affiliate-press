@@ -1,0 +1,31 @@
+/* Estilos personalizados para o painel de administração */
+#custom-woocommerce-partner-report {
+    font-family: Arial, sans-serif;
+}
+
+#custom-woocommerce-partner-report h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#custom-woocommerce-partner-report form {
+    margin-bottom: 40px;
+}
+
+#custom-woocommerce-partner-report input[type="text"],
+#custom-woocommerce-partner-report input[type="submit"] {
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+}
+
+#custom-woocommerce-partner-report input[type="submit"] {
+    background-color: #0073aa;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#custom-woocommerce-partner-report input[type="submit"]:hover {
+    background-color: #005177;
+}

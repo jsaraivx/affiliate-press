@@ -1,0 +1,24 @@
+/* Estilos personalizados para as páginas de relatório */
+.woocommerce-order-details {
+    font-family: Arial, sans-serif;
+}
+
+.woocommerce-order-details h2 {
+    color: #333;
+}
+
+.woocommerce-order-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.woocommerce-order-details table th,
+.woocommerce-order-details table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.woocommerce-order-details table th {
+    background-color: #f4f4f4;
+}

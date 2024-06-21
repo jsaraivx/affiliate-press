@@ -7,7 +7,8 @@
  * Author URI: http://github.com/jsaraivx
  * License: Commercial use.
  */
-if ( ! defined( 'ABSPATH' ) ) {
+
+ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
@@ -58,6 +59,7 @@ add_shortcode( 'partner_coupon_report', 'custom_woocommerce_coupon_partner_repor
 function custom_woocommerce_create_partner_links() {
 	$partners = get_option( 'custom_woocommerce_partners', array() );
 
+	echo '<div id="custom-woocommerce-partner-report">';
 	echo '<h2>Links de Relatórios para Parceiros</h2>';
 	echo '<ul>';
 	foreach ( $partners as $partner_name => $details ) {
@@ -85,6 +87,7 @@ function custom_woocommerce_create_partner_links() {
 	echo '<p><input type="submit" name="remove_partner" value="Remover Parceiro"></p>';
 	echo wp_nonce_field( 'remove_partner_action', 'remove_partner_nonce' );
 	echo '</form>';
+	echo '</div>';
 }
 
 // Função para criar uma página de relatório para um parceiro
@@ -161,3 +164,17 @@ function custom_woocommerce_filter_report_content( $content ) {
 	return $content;
 }
 add_filter( 'the_content', 'custom_woocommerce_filter_report_content' );
+
+// Carregar CSS personalizado no painel de administração
+function custom_woocommerce_admin_styles() {
+	wp_enqueue_style( 'custom-woocommerce-admin-style', plugin_dir_url( __FILE__ ) . 'css/admin-style.css' );
+}
+add_action( 'admin_enqueue_scripts', 'custom_woocommerce_admin_styles' );
+
+// Carregar CSS personalizado nas páginas de relatório
+function custom_woocommerce_report_styles() {
+	if ( is_page() && get_post_meta( get_the_ID(), 'partner_coupon', true ) ) {
+		wp_enqueue_style( 'custom-woocommerce-report-style', plugin_dir_url( __FILE__ ) . 'css/report-style.css' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'custom_woocommerce_report_styles' );
